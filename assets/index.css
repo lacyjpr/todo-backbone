@@ -4,11 +4,11 @@ body {
 	padding: 0;
 }
 
-button {
+/*button {
 	margin: 0;
 	padding: 0;
-	border: 0;
-	/*background: none;*/
+	border: ;
+	background: 1;
 	font-size: 100%;
 	vertical-align: baseline;
 	font-family: inherit;
@@ -19,7 +19,7 @@ button {
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
 	font-smoothing: antialiased;
-}
+}*/
 
 body {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
