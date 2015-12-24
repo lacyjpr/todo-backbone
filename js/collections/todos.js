@@ -5,14 +5,24 @@
   // Todo Collection
   // ---------------
 
+ var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  var authData = ref.getAuth();
+
+  if (authData) {
+    var uid = authData.uid;
+  }
+
   // The collection of todos is backed by firebase instead of localstorrage
   var TodoList = Backbone.Firebase.Collection.extend({
 
     // Reference to this collection's model.
     model: app.Todo,
 
+
+
+
     // Save all of the todos to firebase
-    url: "https://blinding-torch-1635.firebaseIO.com",
+    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
