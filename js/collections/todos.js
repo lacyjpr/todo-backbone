@@ -5,7 +5,7 @@
   // Todo Collection
   // ---------------
 
- var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
   var authData = ref.getAuth();
 
   if (authData) {
@@ -16,10 +16,7 @@
   var TodoList = Backbone.Firebase.Collection.extend({
 
     // Reference to this collection's model.
-    model: app.Todo,
-
-
-
+    model: app.Todo
 
     // Save all of the todos to firebase
     url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
