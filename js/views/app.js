@@ -8,7 +8,7 @@
  var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
   ref.onAuth(function(authData) {
     if (authData !== null) {
-      console.log("Authenticated successfully with payload:");
+      console.log("Authenticated successfully");
     } else {
       // Try to authenticate with Google via OAuth redirection
       ref.authWithOAuthRedirect("google", function(error, authData) {
