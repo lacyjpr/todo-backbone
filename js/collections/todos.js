@@ -5,11 +5,13 @@
   // Todo Collection
   // ---------------
 
+  // The collection of todos is backed by firebase instead of localstorrage
   var TodoList = Backbone.Firebase.Collection.extend({
 
     // Reference to this collection's model.
     model: app.Todo,
 
+    // Save all of the todos to firebase
     url: "https://blinding-torch-1635.firebaseIO.com",
 
     // Filter down the list of all todo items that are finished.
