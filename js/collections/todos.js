@@ -5,15 +5,12 @@
   // Todo Collection
   // ---------------
 
-  // The collection of todos is backed by *localStorage* instead of a remote
-  // server.
-  var TodoList = Backbone.Collection.extend({
+  var TodoList = Backbone.Firebase.Collection.extend({
 
     // Reference to this collection's model.
     model: app.Todo,
 
-    // Save all of the todo items under the `"todos-backbone"` namespace.
-    localStorage: new Backbone.LocalStorage('todos-backbone'),
+    url: "https://blinding-torch-1635.firebaseIO.com",
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
