@@ -5,6 +5,15 @@
   // The Application
   // ---------------
 
+ var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  ref.authWithOAuthRedirect("google", function(error) {
+    if (error) {
+      console.log("Login Failed!", error);
+    } else {
+      // We'll never get here, as the page will redirect on success.
+    }
+  });
+
   // Our overall **AppView** is the top-level piece of UI.
   app.AppView = Backbone.View.extend({
 
