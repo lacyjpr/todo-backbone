@@ -14,7 +14,7 @@
     console.log(uid);
   }
 
-  // The collection of todos is backed by firebase instead of localstorrage
+  // The collection of todos is backed by firebase instead of localstorage
   var TodoList = Backbone.Firebase.Collection.extend({
 
     // Reference to this collection's model.
