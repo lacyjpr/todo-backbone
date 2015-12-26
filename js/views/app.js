@@ -2,36 +2,37 @@
 
   var app = app || {};
 
+  // Authenticate with Google
+  var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+    ref.onAuth(function(authData) {
+      if (authData !== null) {
+        console.log("Authenticated successfully");
+      } else {
+        // Try to authenticate with Google via OAuth redirection
+        ref.authWithOAuthRedirect("google", function(error, authData) {
+          if (error) {
+            console.log("Login Failed!", error);
+          }
+        });
+      }
+    })
+
+  // Create a callback which logs the current auth state
+  function authDataCallback(authData) {
+    if (authData) {
+      console.log("User " + authData.uid + " is logged in with " + authData.provider);
+      uid = authData.uid;
+    } else {
+      console.log("User is logged out");
+    }
+  }
+
+  // Register the callback to be fired every time auth state changes
+  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  ref.onAuth(authDataCallback);
+
   // The Application
   // ---------------
-
- var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
-  ref.onAuth(function(authData) {
-    if (authData !== null) {
-      console.log("Authenticated successfully");
-    } else {
-      // Try to authenticate with Google via OAuth redirection
-      ref.authWithOAuthRedirect("google", function(error, authData) {
-        if (error) {
-          console.log("Login Failed!", error);
-        }
-      });
-    }
-  })
-
-// Create a callback which logs the current auth state
-function authDataCallback(authData) {
-  if (authData) {
-    console.log("User " + authData.uid + " is logged in with " + authData.provider);
-    uid = authData.uid;
-  } else {
-    console.log("User is logged out");
-  }
-}
-
-// Register the callback to be fired every time auth state changes
-var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-ref.onAuth(authDataCallback);
 
   // Our overall **AppView** is the top-level piece of UI.
   app.AppView = Backbone.View.extend({
