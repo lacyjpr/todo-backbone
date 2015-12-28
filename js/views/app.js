@@ -70,7 +70,7 @@
       this.listenTo(app.Todos, 'all', this.render);
 
       app.Todos.fetch();
-      app.Todos.getUid();
+      //app.Todos.getUid();
     },
 
     // New
