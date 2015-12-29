@@ -36,6 +36,7 @@
     // Save all of the todos to firebase
     url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
+
     // Filter down the list of all todo items that are finished.
     completed: function() {
       return this.filter(function( todo ) {

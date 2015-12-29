@@ -2,34 +2,34 @@
 
   var app = app || {};
 
-  // Authenticate with Google
-  var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
-    ref.onAuth(function(authData) {
-      if (authData) {
-        console.log("Authenticated successfully");
-      } else {
-        // Try to authenticate with Google via OAuth redirection
-        ref.authWithOAuthRedirect("google", function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-          }
-        });
-      }
-    })
+  // // Authenticate with Google
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+  //   ref.onAuth(function(authData) {
+  //     if (authData) {
+  //       console.log("Authenticated successfully");
+  //     } else {
+  //       // Try to authenticate with Google via OAuth redirection
+  //       ref.authWithOAuthRedirect("google", function(error, authData) {
+  //         if (error) {
+  //           console.log("Login Failed!", error);
+  //         }
+  //       });
+  //     }
+  //   })
 
-  // Create a callback which logs the current auth state
-  function authDataCallback(authData) {
-    if (authData) {
-      console.log("User " + authData.uid + " is logged in with " + authData.provider);
-      uid = authData.uid;
-    } else {
-      console.log("User is logged out");
-    }
-  }
+  // // Create a callback which logs the current auth state
+  // function authDataCallback(authData) {
+  //   if (authData) {
+  //     console.log("User " + authData.uid + " is logged in with " + authData.provider);
+  //     uid = authData.uid;
+  //   } else {
+  //     console.log("User is logged out");
+  //   }
+  // }
 
-  // Register the callback to be fired every time auth state changes
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  ref.onAuth(authDataCallback);
+  // // Register the callback to be fired every time auth state changes
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  // ref.onAuth(authDataCallback);
 
   // The Application
   // ---------------
@@ -72,6 +72,8 @@
       app.Todos.fetch();
       //app.Todos.getUid();
     },
+
+
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest
