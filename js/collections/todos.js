@@ -12,6 +12,8 @@
   if (authData) {
     var uid = authData.uid;
     console.log(uid);
+  } else {
+    console.log(undefined);
   }
 
   // The collection of todos is backed by firebase instead of localstorage
