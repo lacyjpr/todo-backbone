@@ -3,19 +3,19 @@
   var app = app || {};
 
   // Authenticate with Google
-  var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
-    ref.onAuth(function(authData) {
-      if (authData) {
-        console.log("Authenticated successfully");
-      } else {
-        // Try to authenticate with Google via OAuth redirection
-        ref.authWithOAuthRedirect("google", function(error, authData) {
-          if (error) {
-            console.log("Login Failed!", error);
-          }
-        });
-      }
-    })
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+  //   ref.onAuth(function(authData) {
+  //     if (authData) {
+  //       console.log("Authenticated successfully");
+  //     } else {
+  //       // Try to authenticate with Google via OAuth redirection
+  //       ref.authWithOAuthRedirect("google", function(error, authData) {
+  //         if (error) {
+  //           console.log("Login Failed!", error);
+  //         }
+  //       });
+  //     }
+  //   })
 
   // Create a callback which logs the current auth state
   function authDataCallback(authData) {
@@ -49,7 +49,24 @@
     events: {
       'keypress #new-todo': 'createOnEnter',
       'click #clear-completed': 'clearCompleted',
-      'click #toggle-all': 'toggleAllComplete'
+      'click #toggle-all': 'toggleAllComplete',
+      'click #login': 'authenticate'
+    },
+
+    authenticate: function() {
+    var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+        ref.onAuth(function(authData) {
+          if (authData) {
+            console.log("Authenticated successfully");
+          } else {
+            // Try to authenticate with Google via OAuth redirection
+            ref.authWithOAuthRedirect("google", function(error, authData) {
+              if (error) {
+                console.log("Login Failed!", error);
+              }
+            });
+          }
+        })
     },
 
     // At initialization we bind to the relevant events on the `Todos`
