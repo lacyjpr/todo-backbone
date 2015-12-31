@@ -21,7 +21,7 @@
   function authDataCallback(authData) {
     if (authData) {
       console.log("User " + authData.uid + " is logged in with " + authData.provider);
-      uid = authData.uid;
+      window.uid = authData.uid;
     } else {
       console.log("User is logged out");
     }
@@ -79,7 +79,7 @@
       this.$main = this.$('#main');
 
       this.listenTo(app.Todos, 'add', this.addOne);
-      this.listenTo(app.Todos, 'reset', this.addAll);
+      this.listenTo(app.Todos, 'reset', this.add);
 
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);

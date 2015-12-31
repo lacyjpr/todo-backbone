@@ -6,15 +6,16 @@
   // ---------------
 
   // Get the uid of the user so we can save data on a per user basis
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  var authData = ref.getAuth();
+    // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    // var authData = ref.getAuth();
 
-  if (authData) {
-    var uid = authData.uid;
-    console.log(uid);
-  } else {
-    console.log(undefined);
-  }
+    // if (authData) {
+    //   var uid = authData.uid;
+    console.log(window.uid);
+    // } else {
+    //   console.log(undefined);
+    // }
+
 
   // The collection of todos is backed by firebase instead of localstorage
   var TodoList = Backbone.Firebase.Collection.extend({
@@ -36,8 +37,7 @@
     // url: "https://blinding-torch-1635.firebaseIO.com/" + window.uid,
 
     // Save all of the todos to firebase
-    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
-
+    url: "https://blinding-torch-1635.firebaseIO.com/" + window.uid,
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
@@ -65,6 +65,7 @@
       return todo.get('order');
     }
   });
+
 
   // Create our global collection of **Todos**.
   app.Todos = new TodoList();
