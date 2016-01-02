@@ -79,7 +79,7 @@
       this.$main = this.$('#main');
 
       this.listenTo(app.Todos, 'add', this.addOne);
-      this.listenTo(app.Todos, 'reset', this.add);
+      this.listenTo(app.Todos, 'reset', this.addAll);
 
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
