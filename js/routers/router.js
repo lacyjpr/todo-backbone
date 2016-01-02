@@ -19,7 +19,7 @@
 
       // Trigger a collection filter event, causing hiding/unhiding
       // of Todo view items
-      app.Todos.trigger('filter');
+      window.uid.trigger('filter');
     }
   });
 

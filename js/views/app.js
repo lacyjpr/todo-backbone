@@ -78,15 +78,15 @@
       this.$footer = this.$('#footer');
       this.$main = this.$('#main');
 
-      this.listenTo(app.Todos, 'add', this.addOne);
-      this.listenTo(app.Todos, 'reset', this.addAll);
+      this.listenTo(window.uid, 'add', this.addOne);
+      this.listenTo(window.uid, 'reset', this.addAll);
 
       // New
-      this.listenTo(app.Todos, 'change:completed', this.filterOne);
-      this.listenTo(app.Todos,'filter', this.filterAll);
-      this.listenTo(app.Todos, 'all', this.render);
+      this.listenTo(window.uid, 'change:completed', this.filterOne);
+      this.listenTo(window.uid,'filter', this.filterAll);
+      this.listenTo(window.uid, 'all', this.render);
 
-      app.Todos.fetch();
+      window.uid.fetch();
       //app.Todos.getUid();
     },
 
@@ -96,10 +96,10 @@
     // Re-rendering the App just means refreshing the statistics -- the rest
     // of the app doesn't change.
     render: function() {
-      var completed = app.Todos.completed().length;
-      var remaining = app.Todos.remaining().length;
+      var completed = window.uid.completed().length;
+      var remaining = window.uid.remaining().length;
 
-      if ( app.Todos.length ) {
+      if ( window.uid.length ) {
         this.$main.show();
         this.$footer.show();
 
@@ -130,7 +130,7 @@
     // Add all items in the **Todos** collection at once.
     addAll: function() {
       this.$('#todo-list').html('');
-      app.Todos.each(this.addOne, this);
+      window.uid.each(this.addOne, this);
     },
 
     // New
@@ -140,7 +140,7 @@
 
     // New
     filterAll : function () {
-      app.Todos.each(this.filterOne, this);
+      window.uid.each(this.filterOne, this);
     },
 
 
@@ -162,7 +162,7 @@
         return;
       }
 
-      app.Todos.create( this.newAttributes() );
+      window.uid.create( this.newAttributes() );
       this.$input.val('');
     },
 
@@ -177,7 +177,7 @@
     toggleAllComplete: function() {
       var completed = this.allCheckbox.checked;
 
-      app.Todos.each(function( todo ) {
+      window.uid.each(function( todo ) {
         todo.save({
           'completed': completed
         });

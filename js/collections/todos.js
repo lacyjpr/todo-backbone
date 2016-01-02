@@ -68,4 +68,4 @@
 
 
   // Create our global collection of **Todos**.
-  app.Todos = new TodoList();
+  window.uid = new TodoList();
