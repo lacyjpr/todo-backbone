@@ -48,6 +48,8 @@
             ref.authWithOAuthRedirect("google", function(error, authData) {
               if (error) {
                 console.log("Login Failed!", error);
+              } else {
+                app.Todos.get();
               }
             });
           }
