@@ -3,18 +3,18 @@
   var app = app || {};
 
   // Create a callback which logs the current auth state
-  function authDataCallback(authData) {
-    if (authData) {
-      console.log("User " + authData.uid + " is logged in with " + authData.provider);
-      //window.uid = authData.uid;
-    } else {
-      console.log("User is logged out");
-    }
-  }
+  // function authDataCallback(authData) {
+  //   if (authData) {
+  //     console.log("User " + authData.uid + " is logged in with " + authData.provider);
+  //     this.listenTo(app.Todos, 'all', this.render);
+  //   } else {
+  //     console.log("User is logged out");
+  //   }
+  // }
 
-  // Register the callback to be fired every time auth state changes
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  ref.onAuth(authDataCallback);
+  // // Register the callback to be fired every time auth state changes
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  // ref.onAuth(authDataCallback);
 
   // The Application
   // ---------------
@@ -70,13 +70,23 @@
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
       this.listenTo(app.Todos,'filter', this.filterAll);
-      this.listenTo(app.Todos, 'all', this.render);
+
 
       app.Todos.fetch();
       //app.Todos.getUid();
     },
 
+  authDataCallback: function(authData) {
+    if (authData) {
+      this.listenTo(app.Todos, 'all', this.render);
+    } else {
+      console.log("User is logged out");
+    }
+  }
 
+  // Register the callback to be fired every time auth state changes
+  this.ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  ref.onAuth(authDataCallback);
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest
