@@ -43,14 +43,26 @@
         ref.onAuth(function(authData) {
           if (authData) {
             console.log("Authenticated successfully");
+<<<<<<< HEAD
             app.Todos.fetch({reset:true});
+||||||| merged common ancestors
+=======
+            app.Todos.url = "https://blinding-torch-1635.firebaseIO.com/" + authData.uid;
+            app.Todos.fetch({reset:true});
+>>>>>>> planb
           } else {
             // Try to authenticate with Google via OAuth redirection
             ref.authWithOAuthRedirect("google", function(error, authData) {
               if (error) {
                 console.log("Login Failed!", error);
+<<<<<<< HEAD
               } else {
               app.Todos.fetch({reset:true});
+||||||| merged common ancestors
+=======
+                app.Todos.url = "https://blinding-torch-1635.firebaseIO.com/" + authData.uid;
+                app.Todos.fetch({reset:true});
+>>>>>>> planb
               }
             });
           }
@@ -72,10 +84,10 @@
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
       this.listenTo(app.Todos,'filter', this.filterAll);
-      this.listenTo(app.Todos, 'all', this.render);
 
-      app.Todos.fetch();
-      //app.Todos.getUid();
+
+      app.Todos.sync;
+      this.listenTo(app.Todos, 'all', this.render);
     },
 
 
