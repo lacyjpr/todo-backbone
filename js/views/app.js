@@ -43,14 +43,12 @@
         ref.onAuth(function(authData) {
           if (authData) {
             console.log("Authenticated successfully");
-            app.Todos.fetch({reset:true});
           } else {
             // Try to authenticate with Google via OAuth redirection
             ref.authWithOAuthRedirect("google", function(error, authData) {
               if (error) {
                 console.log("Login Failed!", error);
-              } else {
-              app.Todos.fetch({reset:true});
+              // } else {
               }
             });
           }
