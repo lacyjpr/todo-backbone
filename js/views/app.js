@@ -43,15 +43,11 @@
         ref.onAuth(function(authData) {
           if (authData) {
             console.log("Authenticated successfully");
-            app.Todos.url = "https://blinding-torch-1635.firebaseIO.com/" + authData.uid;
-            app.Todos.fetch({reset:true});
           } else {
             // Try to authenticate with Google via OAuth redirection
             ref.authWithOAuthRedirect("google", function(error, authData) {
               if (error) {
                 console.log("Login Failed!", error);
-                app.Todos.url = "https://blinding-torch-1635.firebaseIO.com/" + authData.uid;
-                app.Todos.fetch({reset:true});
               }
             });
           }

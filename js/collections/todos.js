@@ -12,10 +12,12 @@
     if (authData) {
       var uid = authData.uid;
       console.log("uid " + uid);
+      app.Todos = new Firebase("https://blinding-torch-1635.firebaseIO.com/" + uid);
     } else {
       console.log("uid " + undefined);
     }
 
+  app.AppView.initialize();
 
   // The collection of todos is backed by firebase instead of localstorage
   var TodoList = Backbone.Firebase.Collection.extend({
@@ -24,7 +26,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    //url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
+    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
