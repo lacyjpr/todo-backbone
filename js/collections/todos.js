@@ -12,7 +12,6 @@
     if (authData) {
       var uid = authData.uid;
       console.log("uid " + uid);
-      app.Todos = new Firebase("https://blinding-torch-1635.firebaseIO.com/" + uid);
     } else {
       console.log("uid " + undefined);
     }
@@ -25,7 +24,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
+    //url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
