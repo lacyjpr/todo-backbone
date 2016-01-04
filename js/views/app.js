@@ -69,10 +69,10 @@
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
       this.listenTo(app.Todos,'filter', this.filterAll);
-      this.listenTo(app.Todos, 'all', this.render);
 
-      app.Todos.fetch();
-      //app.Todos.getUid();
+
+      app.Todos.sync;
+      this.listenTo(app.Todos, 'all', this.render);
     },
 
 

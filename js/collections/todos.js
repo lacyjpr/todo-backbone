@@ -11,9 +11,10 @@
 
     if (authData) {
       var uid = authData.uid;
-    console.log(uid);
+      console.log("uid " + uid);
+      app.Todos = new Firebase("https://blinding-torch-1635.firebaseIO.com/" + uid);
     } else {
-      console.log(undefined);
+      console.log("uid " + undefined);
     }
 
 
