@@ -24,7 +24,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    //url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
+    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
     // Fetch the new collection
     // get: function() {
