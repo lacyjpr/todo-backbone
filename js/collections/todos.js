@@ -27,9 +27,9 @@
     url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
 
     // Fetch the new collection
-    get: function() {
-      app.Todos.fetch({reset:true});
-    },
+    // get: function() {
+    //   app.Todos.fetch({reset:true});
+    // },
 
     // Filter down the list of all todo items that are finished.
     completed: function() {
