@@ -6,27 +6,27 @@
   // ---------------
 
   // Get the uid of the user so we can save data on a per user basis
-    // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-    // var authData = ref.getAuth();
+    var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    var authData = ref.getAuth();
 
-    // if (authData) {
-    //   var uid = authData.uid;
-    // console.log(uid);
-    // } else {
-    //   console.log(undefined);
-    // }
-
-  function authDataCallback(authData) {
     if (authData) {
-      uid = authData.uid;
+      var uid = authData.uid;
+    console.log(uid);
     } else {
-      console.log("User is logged out");
+      console.log(undefined);
     }
-  }
 
-  // Register the callback to be fired every time auth state changes
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  ref.onAuth(authDataCallback);
+  // function authDataCallback(authData) {
+  //   if (authData) {
+  //     uid = authData.uid;
+  //   } else {
+  //     console.log("User is logged out");
+  //   }
+  // }
+
+  // // Register the callback to be fired every time auth state changes
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  // ref.onAuth(authDataCallback);
 
   // The collection of todos is backed by firebase instead of localstorage
   var TodoList = Backbone.Firebase.Collection.extend({
