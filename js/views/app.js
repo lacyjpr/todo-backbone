@@ -66,6 +66,7 @@
 
       this.listenTo(app.Todos, 'add', this.addOne);
       this.listenTo(app.Todos, 'reset', this.addAll);
+      //this.listenTo(app.Todos, 'all', this.render);
 
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
@@ -73,20 +74,22 @@
 
 
       app.Todos.fetch();
-      //app.Todos.getUid();
+      // Register the callback to be fired every time auth state changes
+      var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+      ref.onAuth(authDataCallback);
+
     },
 
   authDataCallback: function(authData) {
     if (authData) {
-      this.listenTo(app.Todos, 'all', this.render);
+      console.log(authData.uid);
+      this.render;
     } else {
       console.log("User is logged out");
     }
-  }
+  },
 
-  // Register the callback to be fired every time auth state changes
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  ref.onAuth(authDataCallback);
+
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest
