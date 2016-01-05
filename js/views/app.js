@@ -39,21 +39,32 @@
     },
 
     authenticate: function() {
-    var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
-        ref.onAuth(function(authData) {
-          if (authData) {
-            console.log("Authenticated successfully");
-          } else {
-            // Try to authenticate with Google via OAuth redirection
-            ref.authWithOAuthRedirect("google", function(error, authData) {
-              if (error) {
-                console.log("Login Failed!", error);
-              // } else {
-              }
-            });
-          }
-        })
-    },
+    // var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+    //     ref.onAuth(function(authData) {
+    //       if (authData) {
+    //         console.log("Authenticated successfully");
+    //       } else {
+    //         // Try to authenticate with Google via OAuth redirection
+    //         ref.authWithOAuthRedirect("google", function(error, authData) {
+    //           if (error) {
+    //             console.log("Login Failed!", error);
+    //           // } else {
+    //           }
+    //         });
+    //       }
+    //     })
+    // },
+
+  var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
+  var authData = ref.getAuth();
+  if (!authData) {
+    ref.authWithOAuthRedirect("google", function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      }
+    });
+    }
+  },
 
     // At initialization we bind to the relevant events on the `Todos`
     // collection, when items are added or changed. Kick things off by
@@ -76,14 +87,14 @@
       app.Todos.fetch();
       // Register the callback to be fired every time auth state changes
       var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-      ref.onAuth(authDataCallback);
+      ref.onAuth(this.authDataCallback);
 
     },
 
   authDataCallback: function(authData) {
     if (authData) {
       console.log(authData.uid);
-      this.render;
+      this.render();
     } else {
       console.log("User is logged out");
     }
