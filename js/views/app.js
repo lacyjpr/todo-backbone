@@ -83,6 +83,7 @@
   authDataCallback: function(authData) {
     if (authData) {
       console.log(authData.uid);
+      window.uid = authData.uid;
       this.render;
     } else {
       console.log("User is logged out");

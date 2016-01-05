@@ -16,17 +16,17 @@
     //   console.log(undefined);
     // }
 
-  function authDataCallback(authData) {
-    if (authData) {
-      uid = authData.uid;
-    } else {
-      console.log("User is logged out");
-    }
-  }
+  // function authDataCallback(authData) {
+  //   if (authData) {
+  //     uid = authData.uid;
+  //   } else {
+  //     console.log("User is logged out");
+  //   }
+  // }
 
-  // Register the callback to be fired every time auth state changes
-  var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-  ref.onAuth(authDataCallback);
+  // // Register the callback to be fired every time auth state changes
+  // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  // ref.onAuth(authDataCallback);
 
   // The collection of todos is backed by firebase instead of localstorage
   var TodoList = Backbone.Firebase.Collection.extend({
@@ -35,7 +35,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
+    url: "https://blinding-torch-1635.firebaseIO.com/" + window.uid,
 
     // Fetch the new collection
     // get: function() {
