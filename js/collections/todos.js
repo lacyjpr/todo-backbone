@@ -18,7 +18,7 @@
 
   // function authDataCallback(authData) {
   //   if (authData) {
-  //     uid = authData.uid;
+  //     window.uid = authData.uid;
   //   } else {
   //     console.log("User is logged out");
   //   }

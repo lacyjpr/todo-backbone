@@ -76,7 +76,7 @@
       app.Todos.fetch();
       // Register the callback to be fired every time auth state changes
       var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-      ref.onAuth(authDataCallback);
+      ref.onAuth(this.authDataCallback);
 
     },
 
