@@ -69,8 +69,7 @@
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
       this.listenTo(app.Todos,'filter', this.filterAll);
 
-
-      app.Todos.fetch();
+      this.updateTodoList();
       // Register the callback to be fired every time auth state changes
       //var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
 
@@ -79,13 +78,24 @@
   authDataCallback: function(authData) {
     if (authData) {
       console.log(authData.uid);
+      window.uid = authData.uid;
       this.render;
     } else {
       console.log("User is logged out");
     }
   },
 
+  updateTodoList: function(){
 
+    //Add uid to firebase url
+    this.firebaseUrl = "https://blinding-torch-1635.firebaseio.com/" + window.uid;
+
+    //Fire a TodoList collection to get data from Firebase
+    app.Todos = new TodoList([], {
+      url: this.firebaseUrl
+    });
+
+  },
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest
