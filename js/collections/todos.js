@@ -35,13 +35,13 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    // url: "https://blinding-torch-1635.firebaseIO.com/" + uid,
+     url: window.firebaseUrl,
 
     // Set url based on uid (passed from AppView)
     // credit sarah_m https://github.com/sarah-maris/FEND-health-tracker
-    initialize: function(models, params) {
-        this.url = params.url;
-    },
+    // initialize: function(models, params) {
+    //     this.url = params.url;
+    // },
 
 
     // Fetch the new collection

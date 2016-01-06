@@ -40,11 +40,10 @@
 
     authenticate: function() {
     var ref = new Firebase("https://blinding-torch-1635.firebaseIO.com");
-
+    ref.onAuth(this.authDataCallback);
     var authData = ref.getAuth();
     if (!authData) {
       ref.authWithOAuthRedirect("google", function(error, authData) {
-        ref.onAuth(this.authDataCallback);
         if (error) {
           console.log("Login Failed!", error);
           }
@@ -63,7 +62,7 @@
 
       this.listenTo(app.Todos, 'add', this.addOne);
       this.listenTo(app.Todos, 'reset', this.addAll);
-      //this.listenTo(app.Todos, 'all', this.render);
+      this.listenTo(app.Todos, 'all', this.render);
 
       // New
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
@@ -78,7 +77,6 @@
   authDataCallback: function(authData) {
     if (authData) {
       console.log(authData.uid);
-      window.uid = authData.uid;
       this.render;
     } else {
       console.log("User is logged out");
@@ -86,14 +84,16 @@
   },
 
   updateTodoList: function(){
+    var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    var authData = ref.getAuth();
 
     //Add uid to firebase url
-    this.firebaseUrl = "https://blinding-torch-1635.firebaseio.com/" + window.uid;
+    window.firebaseUrl = "https://blinding-torch-1635.firebaseio.com/" + authData.uid;
 
     //Fire a TodoList collection to get data from Firebase
-    app.Todos = new TodoList([], {
-      url: this.firebaseUrl
-    });
+    // app.Todos = new TodoList([], {
+    //   url: this.firebaseUrl
+    // });
 
   },
 
