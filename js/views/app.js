@@ -68,7 +68,7 @@
       this.listenTo(app.Todos, 'change:completed', this.filterOne);
       this.listenTo(app.Todos,'filter', this.filterAll);
 
-      this.updateTodoList();
+      // this.updateTodoList();
       // Register the callback to be fired every time auth state changes
       //var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
 
@@ -77,25 +77,24 @@
   authDataCallback: function(authData) {
     if (authData) {
       console.log(authData.uid);
+      // window.uid = authData.uid;
       this.render;
     } else {
       console.log("User is logged out");
     }
   },
 
-  updateTodoList: function(){
-    var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-    var authData = ref.getAuth();
+  // updateTodoList: function(){
+  //   // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+  //   // var authData = ref.getAuth();
 
-    //Add uid to firebase url
-    window.firebaseUrl = "https://blinding-torch-1635.firebaseio.com/" + authData.uid;
+  //   //Add uid to firebase url
+  //   firebaseUrl = "https://blinding-torch-1635.firebaseio.com/" + window.uid;
 
-    //Fire a TodoList collection to get data from Firebase
-    // app.Todos = new TodoList([], {
-    //   url: this.firebaseUrl
-    // });
+  //   //Fire a TodoList collection to get data from Firebase
+  //   app.Todos = new TodoList([],{ url: "https://blinding-torch-1635.firebaseIO.com/" });
 
-  },
+  // },
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest

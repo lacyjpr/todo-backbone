@@ -35,7 +35,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-     url: window.firebaseUrl,
+    // url: window.firebaseUrl,
 
     // Set url based on uid (passed from AppView)
     // credit sarah_m https://github.com/sarah-maris/FEND-health-tracker
@@ -43,6 +43,16 @@
     //     this.url = params.url;
     // },
 
+    url: function() {
+      var base_url = "https://blinding-torch-1635.firebaseio.com";
+      var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+      var authData = ref.getAuth();
+      if (authData) {
+        return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid)
+        } else {
+        return new Firebase(base_url);
+        }
+      },
 
     // Fetch the new collection
     // get: function() {
