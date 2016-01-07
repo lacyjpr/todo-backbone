@@ -48,7 +48,7 @@
       var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
       var authData = ref.getAuth();
       if (authData) {
-        return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid)
+        return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid);
         } else {
         return new Firebase(base_url);
         }
