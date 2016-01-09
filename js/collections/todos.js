@@ -6,15 +6,15 @@
   // ---------------
 
   // Get the uid of the user so we can save data on a per user basis
-    var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-    var authData = ref.getAuth();
+    // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    // var authData = ref.getAuth();
 
-    if (authData) {
-      window.uid = authData.uid;
-    console.log(uid);
-    } else {
-      console.log(undefined);
-    }
+    // if (authData) {
+    //   window.uid = authData.uid;
+    // console.log(uid);
+    // } else {
+    //   console.log(undefined);
+    // }
 
   // function authDataCallback(authData) {
   //   if (authData) {
@@ -43,16 +43,16 @@
     //     this.url = params.url;
     // },
 
-    // url: function() {
-    //   var base_url = "https://blinding-torch-1635.firebaseio.com";
-    //   var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-    //   var authData = ref.getAuth();
-    //   if (authData) {
-    //     return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid);
-    //     } else {
-    //     return new Firebase(base_url);
-    //     }
-    //   },
+    url: function() {
+      var base_url = "https://blinding-torch-1635.firebaseio.com";
+      var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+      var authData = ref.getAuth();
+      if (authData) {
+        return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid);
+        } else {
+        return new Firebase(base_url);
+        }
+      },
 
     // Fetch the new collection
     // get: function() {
