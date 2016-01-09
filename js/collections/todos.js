@@ -35,7 +35,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    url: "https://blinding-torch-1635.firebaseio.com/" + window.uid,
+    // url: "https://blinding-torch-1635.firebaseio.com/" + window.uid,
 
     // Set url based on uid (passed from AppView)
     // credit sarah_m https://github.com/sarah-maris/FEND-health-tracker
