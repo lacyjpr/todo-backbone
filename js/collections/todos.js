@@ -6,19 +6,19 @@
   // ---------------
 
   // Get the uid of the user so we can save data on a per user basis
-    // var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-    // var authData = ref.getAuth();
+    var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    var authData = ref.getAuth();
 
-    // if (authData) {
-    //   var uid = authData.uid;
-    // console.log(uid);
-    // } else {
-    //   console.log(undefined);
-    // }
+    if (authData) {
+      window.uid = authData.uid;
+    console.log(uid);
+    } else {
+      console.log(undefined);
+    }
 
   // function authDataCallback(authData) {
   //   if (authData) {
-  //     uid = authData.uid;
+  //     var uid = authData.uid;
   //   } else {
   //     console.log("User is logged out");
   //   }
@@ -35,7 +35,7 @@
     model: app.Todo,
 
     // Save all of the todos to firebase
-    // url: window.firebaseUrl,
+    url: "https://blinding-torch-1635.firebaseio.com/" + window.uid,
 
     // Set url based on uid (passed from AppView)
     // credit sarah_m https://github.com/sarah-maris/FEND-health-tracker
@@ -43,16 +43,16 @@
     //     this.url = params.url;
     // },
 
-    url: function() {
-      var base_url = "https://blinding-torch-1635.firebaseio.com";
-      var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
-      var authData = ref.getAuth();
-      if (authData) {
-        return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid);
-        } else {
-        return new Firebase(base_url);
-        }
-      },
+    // url: function() {
+    //   var base_url = "https://blinding-torch-1635.firebaseio.com";
+    //   var ref = new Firebase("https://blinding-torch-1635.firebaseio.com");
+    //   var authData = ref.getAuth();
+    //   if (authData) {
+    //     return new Firebase("https://blinding-torch-1635.firebaseio.com" + authData.uid);
+    //     } else {
+    //     return new Firebase(base_url);
+    //     }
+    //   },
 
     // Fetch the new collection
     // get: function() {
