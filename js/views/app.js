@@ -35,7 +35,11 @@
       'keypress #new-todo': 'createOnEnter',
       'click #clear-completed': 'clearCompleted',
       'click #toggle-all': 'toggleAllComplete',
-      'click #login': 'authenticate'
+      'click #login': 'authenticate',
+      'click #login': function() {
+        Backbone.history.loadUrl();
+        return false;
+      }
     },
 
     authenticate: function() {
@@ -79,7 +83,6 @@
       console.log(authData.uid);
       // window.uid = authData.uid;
       this.render;
-      myBackboneRouter.navigate("users", {trigger: true})
     } else {
       console.log("User is logged out");
     }
