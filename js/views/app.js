@@ -79,6 +79,7 @@
       console.log(authData.uid);
       // window.uid = authData.uid;
       this.render;
+      myBackboneRouter.navigate("users", {trigger: true})
     } else {
       console.log("User is logged out");
     }
