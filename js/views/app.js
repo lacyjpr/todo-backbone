@@ -35,11 +35,7 @@
       'keypress #new-todo': 'createOnEnter',
       'click #clear-completed': 'clearCompleted',
       'click #toggle-all': 'toggleAllComplete',
-      'click #login': 'authenticate',
-      'click #login': function() {
-        Backbone.history.loadUrl();
-        return false;
-      }
+      'click #login': 'authenticate'
     },
 
     authenticate: function() {
